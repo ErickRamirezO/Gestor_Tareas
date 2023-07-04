@@ -1,83 +1,91 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Google Keep Clone</title>
-  <link href="css/estilo.css" rel="stylesheet" type="text/css">
-</head>
-<body>
-    <div id="header">
-    <h1>Google Keep Clone</h1>
-  </div>
-  
-  <div id="notes-container">
-    <!-- Contenedor para las notas -->
-    <div id="notes"></div>
-    
-    <!-- Formulario para agregar una nueva nota -->
-    <form id="add-note-form">
-      <input type="text" id="note-title" placeholder="Título de la nota" required>
-      <textarea id="note-content" placeholder="Contenido de la nota" required></textarea>
-      <button type="submit">Agregar Nota</button>
-    </form>
-  </div>
-  
-  <script>
-    // Arreglo para almacenar las notas
-    var notes = [];
-    
-    // Función para renderizar las notas en el contenedor
-    function renderNotes() {
-      var notesContainer = document.getElementById("notes");
-      notesContainer.innerHTML = "";
-      
-      // Recorrer todas las notas y agregarlas al contenedor
-      for (var i = 0; i < notes.length; i++) {
-        var note = notes[i];
-        
-        // Crear el elemento de la nota
-        var noteElement = document.createElement("div");
-        noteElement.classList.add("note");
-        
-        // Agregar el título y el contenido de la nota
-        var titleElement = document.createElement("h2");
-        titleElement.textContent = note.title;
-        noteElement.appendChild(titleElement);
-        
-        var contentElement = document.createElement("p");
-        contentElement.textContent = note.content;
-        noteElement.appendChild(contentElement);
-        
-        // Agregar la nota al contenedor
-        notesContainer.appendChild(noteElement);
-      }
-    }
-    
-    // Función para manejar el envío del formulario para agregar una nueva nota
-    function handleAddNoteFormSubmit(event) {
-      event.preventDefault();
-      
-      // Obtener los valores del formulario
-      var title = document.getElementById("note-title").value;
-      var content = document.getElementById("note-content").value;
-      
-      // Crear un objeto de nota y agregarlo al arreglo de notas
-      var newNote = {
-        title: title,
-        content: content
-      };
-      notes.push(newNote);
-      
-      // Limpiar los campos del formulario
-      document.getElementById("note-title").value = "";
-      document.getElementById("note-content").value = "";
-      
-      // Renderizar las notas actualizadas
-      renderNotes();
-    }
-    
-    // Agregar el evento para manejar el envío del formulario
-    var addNoteForm = document.getElementById("add-note-form");
-    addNoteForm.addEventListener("submit", handleAddNoteFormSubmit);
-  </script>
-</body>
+    <head>
+        <title>Google Keep Clone</title>
+        <link href="css/estilo.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <div id="header">
+            <h1>Gestor tareas</h1>
+        </div>
+
+        <div id="notes-container">
+            <!-- Contenedor para las notas -->
+            <div id="notes"></div>
+        </div>
+        <!-- Formulario para agregar una nueva nota -->
+        <form id="add-note-form">
+            <input
+                type="text"
+                id="note-title"
+                placeholder="Título de la nota"
+                required
+            />
+            <textarea
+                id="note-content"
+                placeholder="Contenido de la nota"
+                required
+            ></textarea>
+            <button type="submit" class="agregar-nota">Agregar Nota</button>
+        </form>
+
+        <script>
+            // Arreglo para almacenar las notas
+            var notes = [];
+
+            // Función para renderizar las notas en el contenedor
+            function renderNotes() {
+                var notesContainer = document.getElementById("notes");
+                notesContainer.innerHTML = "";
+
+                // Recorrer todas las notas y agregarlas al contenedor
+                for (var i = 0; i < notes.length; i++) {
+                    var note = notes[i];
+
+                    // Crear el elemento de la nota
+                    var noteElement = document.createElement("div");
+                    noteElement.classList.add("note");
+
+                    // Agregar el título y el contenido de la nota
+                    var titleElement = document.createElement("h2");
+                    titleElement.textContent = note.title;
+                    noteElement.appendChild(titleElement);
+
+                    var contentElement = document.createElement("p");
+                    contentElement.textContent = note.content;
+                    noteElement.appendChild(contentElement);
+
+                    // Agregar la nota al contenedor
+                    notesContainer.appendChild(noteElement);
+                }
+            }
+
+            // Función para manejar el envío del formulario para agregar una nueva nota
+            function handleAddNoteFormSubmit(event) {
+                event.preventDefault();
+
+                // Obtener los valores del formulario
+                var title = document.getElementById("note-title").value;
+                var content = document.getElementById("note-content").value;
+
+                // Crear un objeto de nota y agregarlo al arreglo de notas
+                var newNote = {
+                    title: title,
+                    content: content,
+                };
+                notes.push(newNote);
+
+                // Limpiar los campos del formulario
+                document.getElementById("note-title").value = "";
+                document.getElementById("note-content").value = "";
+
+                // Renderizar las notas actualizadas
+                renderNotes();
+            }
+
+            // Agregar el evento para manejar el envío del formulario
+            var addNoteForm = document.getElementById("add-note-form");
+            addNoteForm.addEventListener("submit", handleAddNoteFormSubmit);
+        </script>
+    </body>
 </html>
