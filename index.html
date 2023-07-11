@@ -3,11 +3,27 @@
     <head>
         <title>Google Keep Clone</title>
         <link href="css/estilo.css" rel="stylesheet" type="text/css" />
+        <!-- Compiled and minified CSS -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+        />
+        <link
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+            rel="stylesheet"
+        />
     </head>
     <body>
-        <div id="header">
-            <h1>Gestor tareas</h1>
-        </div>
+        <nav>
+            <div class="nav-wrapper">
+                <i class="material-icons">lightbulb_outline</i>
+                <a href="#" class="brand-logo">TaskXpress</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="badges.html">Iniciar sesión</a></li>
+                    <li><a class="waves-effect waves-light btn blue" href="html/registro.html">Registro</a></li>
+                </ul>
+            </div>
+        </nav>
 
         <div id="notes-container">
             <!-- Contenedor para las notas -->
