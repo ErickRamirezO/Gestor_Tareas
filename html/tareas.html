@@ -1,147 +1,166 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8" />
-    <title>TaskXpress</title>
-    <link href="../css/estilo.css" rel="stylesheet" type="text/css" />
-    <!-- Compiled and minified CSS -->
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-    />
-    <link
-        href="https://fonts.googleapis.com/icon?family=Material+Icons"
-        rel="stylesheet"
-    />
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-</head>
-<body>
-    <nav>
-        <div class="nav-wrapper blue">
-            <a href="#" class="brand-logo">
-                <i class="medium material-icons">lightbulb_outline</i>TaskXpress
-            </a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li>Juan Pérez</li>
-                <li><a href="badges.html">Editar perfil</a></li>
-                <li><i class="material-icons">account_circle</i></li>
-            </ul>
-            <form class="hide-on-med-and-down">
-                <div class="input-field" style="margin: 0 auto; width: 50%">
+    <head>
+        <meta charset="utf-8" />
+        <title>TaskXpress</title>
+        <link href="../css/estilo.css" rel="stylesheet" type="text/css" />
+        <!-- Compiled and minified CSS -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+        />
+        <link
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+            rel="stylesheet"
+        />
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    </head>
+    <body>
+        <nav>
+            <div class="nav-wrapper blue">
+                <a href="#" class="brand-logo">
+                    <i class="medium material-icons">lightbulb_outline</i
+                    >TaskXpress
+                </a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li>Juan Pérez</li>
+                    <li><a href="badges.html">Editar perfil</a></li>
+                    <li><i class="material-icons">account_circle</i></li>
+                </ul>
+                <form class="hide-on-med-and-down">
+                    <div class="input-field" style="margin: 0 auto; width: 50%">
+                        <input
+                            id="search"
+                            type="search"
+                            required
+                            placeholder="Buscar tareas o ámbitos"
+                        />
+                        <label class="label-icon" for="search"
+                            ><i class="material-icons">search</i></label
+                        >
+                        <i class="material-icons">close</i>
+                    </div>
+                </form>
+            </div>
+        </nav>
+        <section class="row">
+            <div class="titulos_notas col l9 offset-l3 ">
+                <h6>Todas las tareas</h6>
+            </div>
+            <div class="section_eliminar col l12 center" style="display: none">
+                <h6 class="titulo_eliminar">
+                    Selecciona una nota para eliminar
+                </h6>
+                <button class="btn cyan lighten-5 black-text boton_cancelar">
+                    Cancelar
+                </button>
+                <button class="btn red boton_eliminar">Eliminar nota</button>
+            </div>
+            <div class="ambitos col m3 l3 hide-on-med-and-down">
+                <h6>Ámbitos o categorías</h6>
+                <div class="ambitos_item center hoverable">
+                    <p>
+                        Todas las tareas
+                    </p>
+                </div>
+            </div>
+            <div
+                id="notes-container"
+                class="sortable col m9 l9 notes-container"
+            >
+            
+                <!-- Contenedor para las notas -->
+                <div class="ui-state-default ui-widget-content note hoverable">
+                    1
+                    <p>j</p>
+                    <p>j</p>
+                </div>
+                <div class="ui-state-default ui-widget-content note hoverable">
+                    2
+                </div>
+                <div class="ui-state-default ui-widget-content note hoverable">
+                    3
+                </div>
+                <div class="ui-state-default ui-widget-content note hoverable">
+                    4
+                </div>
+                <div class="ui-state-default ui-widget-content note hoverable">
+                    5
+                </div>
+                <div class="ui-state-default ui-widget-content note hoverable">
+                    6
+                </div>
+                <div class="ui-state-default ui-widget-content note hoverable">
+                    7
+                </div>
+            </div>
+        </section>
+
+        <!-- Formulario para agregar una nueva nota -->
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+                <form id="add-note-form">
                     <input
-                        id="search"
-                        type="search"
+                        type="text"
+                        id="note-title"
+                        placeholder="Título de la nota"
                         required
-                        placeholder="Buscar tareas o ámbitos"
                     />
-                    <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                    <i class="material-icons">close</i>
-                </div>
-            </form>
-        </div>
-    </nav>
-    <section class="row"> 
-        <div class="section_eliminar col l12 center" style="display:none">
-            <h6 class="titulo_eliminar">Selecciona una nota para eliminar</h6>
-            <button class="btn red boton_eliminar">Eliminar nota</button>
-        </div>
-        <div class="ambitos col m3 l3 hide-on-med-and-down">
-            <p>hola</p>
-            <div class="ui-state-default ui-widget-content note">
-                1
+                    <textarea
+                        id="note-content"
+                        placeholder="Contenido de la nota"
+                        required
+                    ></textarea>
+                    <input
+                        type="text"
+                        name="ambito"
+                        id="ambito"
+                        placeholder="Ingresa el ámbito de la nota"
+                        required
+                    />
+                    <div class="botones_anadir_tarea">
+                        <a type="submit" class="agregar-nota blue btn">
+                            Agregar Nota
+                        </a>
+                        <a
+                            href="#!"
+                            class="modal-close waves-effect waves-green btn-flat red white-text"
+                            >Cancelar</a
+                        >
+                    </div>
+                </form>
             </div>
         </div>
-        <div id="notes-container" class="sortable col m9 l9 notes-container">
-            <!-- Contenedor para las notas -->
-            <div class="ui-state-default ui-widget-content note hoverable">
-                1<p>j</p><p>j</p>
-            </div>
-            <div class="ui-state-default ui-widget-content note hoverable">
-                2
-            </div>
-            <div class="ui-state-default ui-widget-content note hoverable">
-                3
-            </div>
-            <div class="ui-state-default ui-widget-content note hoverable">
-                4
-            </div>
-            <div class="ui-state-default ui-widget-content note hoverable">
-                5
-            </div>
-            <div class="ui-state-default ui-widget-content note hoverable">
-                6
-            </div>
-            <div class="ui-state-default ui-widget-content note hoverable">
-                7
-            </div>
-        </div>
-    </section>
 
-    <!-- Formulario para agregar una nueva nota -->
-    <div id="modal1" class="modal">
-        <div class="modal-content">
-            <form id="add-note-form">
-                <input
-                    type="text"
-                    id="note-title"
-                    placeholder="Título de la nota"
-                    required
-                />
-                <textarea
-                    id="note-content"
-                    placeholder="Contenido de la nota"
-                    required
-                ></textarea>
-                <input
-                    type="text"
-                    name="ambito"
-                    id="ambito"
-                    placeholder="Ingresa el ámbito de la nota"
-                    required
-                />
-                <div class="botones_anadir_tarea">
-                    <a type="submit" class="agregar-nota blue btn">
-                        Agregar Nota
-                    </a>
+        <!--AGREGAR TAREA-->
+        <div class="fixed-action-btn">
+            <a class="btn-floating pulse btn-large blue">
+                <i class="large material-icons">mode_edit</i>
+            </a>
+            <ul>
+                <li>
                     <a
-                        href="#!"
-                        class="modal-close waves-effect waves-green btn-flat red white-text"
-                        >Cancelar</a
+                        class="btn-floating green tooltipped modal-trigger"
+                        data-position="left"
+                        href="#modal1"
+                        data-tooltip="Añadir tarea"
+                        ><i class="material-icons">add</i></a
                     >
-                </div>
-            </form>
+                </li>
+                <li>
+                    <a
+                        class="btn-floating red eliminar_nota tooltipped modal-trigger"
+                        data-position="left"
+                        id="btnToggle"
+                        data-tooltip="Eliminar tarea"
+                        ><i class="material-icons">delete</i></a
+                    >
+                </li>
+            </ul>
         </div>
-    </div>
-
-    <!--AGREGAR TAREA-->
-    <div class="fixed-action-btn">
-        <a class="btn-floating pulse btn-large blue">
-            <i class="large material-icons">mode_edit</i>
-        </a>
-        <ul>
-            <li>
-                <a
-                    class="btn-floating green tooltipped modal-trigger"
-                    data-position="left"
-                    href="#modal1"
-                    data-tooltip="Añadir tarea"
-                    ><i class="material-icons">add</i></a
-                >
-            </li>
-            <li>
-                <a
-                    class="btn-floating red eliminar_nota tooltipped modal-trigger"
-                    data-position="left"
-                    id="btnToggle"
-                    data-tooltip="Eliminar tarea"
-                    ><i class="material-icons">delete</i></a
-                >
-            </li>
-        </ul>
-    </div>
-    <script src="../js/tareas.js"></script>
-</body>
+        <script src="../js/tareas.js"></script>
+    </body>
 </html>

@@ -83,8 +83,7 @@ $(document).ready(function() {
     $(".eliminar_nota").click(function() {
         $(".section_eliminar").fadeIn();
         $(".boton_eliminar").hide();
-        $(".note").removeClass("selected");
-        $(".note").off("click").on("click", function() {
+        $(".note").removeClass("selected").off("click").on("click", function() {
             $(this).toggleClass("selected");
             var selectedNotes = $(".note.selected");
             if (selectedNotes.length > 0) {
@@ -95,25 +94,17 @@ $(document).ready(function() {
         });
     });
 
-    $(".section_eliminar .btn").click(function() {
+    $(".boton_eliminar").click(function() {
         $(".note.selected").remove();
         $(".section_eliminar").fadeOut();
+        $(".note").off("click");
     });
 
-    var seleccionados = [];
-
-    $("#selectable").selectable({
-        selecting: function(event, ui) {
-            // Almacenar los elementos seleccionados en cada evento de selección
-            seleccionados.push(ui.selecting);
-        },
-        unselecting: function(event, ui) {
-            // Eliminar los elementos no seleccionados en cada evento de deselección
-            seleccionados = seleccionados.filter(function(item) {
-                return item !== ui.unselecting;
-            });
-        },
+    $(".boton_cancelar").click(function() {
+        $(".section_eliminar").fadeOut();
+        $(".note").off("click");
     });
+
 });
 
 
@@ -125,11 +116,11 @@ $(document).ready(function() {
         $(".note").filter(function() {
             var noteText = $(this).text().toLowerCase();
             return noteText.indexOf(searchTerm) === -1;
-        }).hide();
+        }).fadeOut();
 
         $(".note").filter(function() {
             var noteText = $(this).text().toLowerCase();
             return noteText.indexOf(searchTerm) !== -1;
-        }).show();
+        }).fadeIn();
     });
 });

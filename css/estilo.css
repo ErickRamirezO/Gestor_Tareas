@@ -21,6 +21,22 @@ body {
     text-align: center;
 }
 
+.ambitos{
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.ambitos_item{
+    border:1px solid #ccc;
+    width: 80%;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: #fff;
+}
+
 #notes-container {
     display: flex;
     flex-direction: row;
