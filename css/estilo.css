@@ -109,3 +109,27 @@ body {
     align-items: center;
     gap:25px;
 }
+
+.logo {
+    text-align: center;
+}
+
+.grid-layout {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+.grid-element {
+    width: 90%;
+    margin: auto;
+    text-align: center;
+}
+
+.demo-img {
+    width: 100%;
+    border-radius: 5%;
+}
+
+.medium-text {
+    font-size: large;
+}
