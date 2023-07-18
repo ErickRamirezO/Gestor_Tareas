@@ -110,8 +110,13 @@ body {
     gap:25px;
 }
 
-.logo {
+.promo {
     text-align: center;
+    padding: 10px;
+}
+
+.background-gray {
+    background-color: rgb(234, 235, 237);
 }
 
 .grid-layout {
@@ -122,7 +127,6 @@ body {
 .grid-element {
     width: 90%;
     margin: auto;
-    text-align: center;
 }
 
 .demo-img {
