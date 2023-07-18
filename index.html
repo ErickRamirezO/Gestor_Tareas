@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Google Keep Clone</title>
+        <title>TaskXpress</title>
         <link href="css/estilo.css" rel="stylesheet" type="text/css" />
         <!-- Compiled and minified CSS -->
         <link
@@ -25,25 +25,12 @@
             </div>
         </nav>
 
-        <div id="notes-container">
-            <!-- Contenedor para las notas -->
-            <div id="notes"></div>
+        <h4> Simplifica tus ideas</h4>
+        <div id="contenido">
+            <div class="cuadro_contenido"></div>
+            <div class="cuadro_contenido"></div>
+            <div class="cuadro_contenido"></div>
         </div>
-        <!-- Formulario para agregar una nueva nota -->
-        <form id="add-note-form">
-            <input
-                type="text"
-                id="note-title"
-                placeholder="Título de la nota"
-                required
-            />
-            <textarea
-                id="note-content"
-                placeholder="Contenido de la nota"
-                required
-            ></textarea>
-            <button type="submit" class="agregar-nota">Agregar Nota</button>
-        </form>
 
         <script>
             // Arreglo para almacenar las notas

@@ -1,65 +1,49 @@
-// Arreglo para almacenar las notas
-var notes = [];
+var notaCount = 1; // Contador para llevar el control de las notas agregadas
+var seleccionados = []; // Array para almacenar los elementos seleccionados
 
-// Función para renderizar las notas en el contenedor
-function renderNotes() {
-    var notesContainer = document.getElementById("notes");
-    notesContainer.innerHTML = "";
+// Agregar nueva nota
+$(".agregar-nota").click(function () {
+    var notaTitle = $("#note-title").val();
+    var notaContent = $("#note-content").val();
+    var ambito = $("#ambito").val();
 
-    // Recorrer todas las notas y agregarlas al contenedor
-    for (var i = 0; i < notes.length; i++) {
-        var note = notes[i];
+    // Construir el nombre de la clase
+    var notaClass = "note" + notaCount;
 
-        // Crear el elemento de la nota
-        var noteElement = document.createElement("div");
-        noteElement.classList.add("note");
+    // Crear el elemento de la nota con la clase correspondiente
+    var nuevaNota = $("<div>", {
+        class: "note ui-state-default " + notaClass + "ui-widget-content",
+        text: notaTitle,
+    });
 
-        // Agregar el título y el contenido de la nota
-        var titleElement = document.createElement("h2");
-        titleElement.textContent = note.title;
-        noteElement.appendChild(titleElement);
+    // Incrementar el contador
+    notaCount++;
 
-        var contentElement = document.createElement("p");
-        contentElement.textContent = note.content;
-        noteElement.appendChild(contentElement);
-
-        // Agregar la nota al contenedor
-        notesContainer.appendChild(noteElement);
-    }
-}
-
-// Función para manejar el envío del formulario para agregar una nueva nota
-function handleAddNoteFormSubmit(event) {
-    event.preventDefault();
-
-    // Obtener los valores del formulario
-    var title = document.getElementById("note-title").value;
-    var content = document.getElementById("note-content").value;
-
-    // Crear un objeto de nota y agregarlo al arreglo de notas
-    var newNote = {
-        title: title,
-        content: content,
-    };
-    notes.push(newNote);
+    // Agregar la nota al contenedor
+    $("#notes-container").append(nuevaNota);
 
     // Limpiar los campos del formulario
-    document.getElementById("note-title").value = "";
-    document.getElementById("note-content").value = "";
+    $("#note-title").val("");
+    $("#note-content").val("");
+    $("#ambito").val("");
 
-    // Renderizar las notas actualizadas
-    renderNotes();
-}
+    // Asignar el evento de eliminación a la nueva nota
+    nuevaNota.click(function () {
+        // Mostrar el modal para confirmar la eliminación
+        var modalEliminar = $("#modal_eliminar");
+        modalEliminar.modal("open");
 
-// Agregar el evento para manejar el envío del formulario
-var addNoteForm = document.getElementById("add-note-form");
-addNoteForm.addEventListener("submit", handleAddNoteFormSubmit);
-
-
+        // Eliminar la nota al hacer clic en el botón "Eliminar Nota"
+        $(".agregar-nota", modalEliminar).click(function () {
+            nuevaNota.remove();
+            modalEliminar.modal("close");
+        });
+    });
+});
 //ACTION BUTTON
 $(document).ready(function () {
     var elems = $(".fixed-action-btn");
-    var instances = M.FloatingActionButton.init(elems, {
+    M.FloatingActionButton.init(elems, {
         direction: "top",
     });
 });
@@ -67,19 +51,85 @@ $(document).ready(function () {
 //TOOLTIPS PARA ACTIONS BUTTON
 $(document).ready(function () {
     var elems = $(".tooltipped");
-    var instances = M.Tooltip.init(elems, {
+    M.Tooltip.init(elems, {
         position: "left",
     });
 });
 
-function añadirTarea(){
-
-}
+// DRAGGABLE AND SORTABLE
+$(function () {
+    $(".sortable").sortable({
+        revert: true,
+    });
+    $("#draggable").draggable({
+        connectToSortable: ".sortable",
+        helper: "clone",
+        revert: "invalid",
+    });
+    $("ul, li").disableSelection();
+});
 
 //MODAL AÑADIR TAREA
 $(document).ready(function () {
     var elems = $(".modal");
-    var instances = M.Modal.init(elems, {
+    M.Modal.init(elems, {
         opacity: 0.7,
+        preventScrolling:true,	
+    });
+});
+
+//ELiminar
+$(document).ready(function() {
+    $(".eliminar_nota").click(function() {
+        $(".section_eliminar").fadeIn();
+        $(".boton_eliminar").hide();
+        $(".note").removeClass("selected");
+        $(".note").off("click").on("click", function() {
+            $(this).toggleClass("selected");
+            var selectedNotes = $(".note.selected");
+            if (selectedNotes.length > 0) {
+                $(".boton_eliminar").fadeIn();
+            } else {
+                $(".boton_eliminar").fadeOut();
+            }
+        });
+    });
+
+    $(".section_eliminar .btn").click(function() {
+        $(".note.selected").remove();
+        $(".section_eliminar").fadeOut();
+    });
+
+    var seleccionados = [];
+
+    $("#selectable").selectable({
+        selecting: function(event, ui) {
+            // Almacenar los elementos seleccionados en cada evento de selección
+            seleccionados.push(ui.selecting);
+        },
+        unselecting: function(event, ui) {
+            // Eliminar los elementos no seleccionados en cada evento de deselección
+            seleccionados = seleccionados.filter(function(item) {
+                return item !== ui.unselecting;
+            });
+        },
+    });
+});
+
+
+//BUSQUEDA DE NOTAS
+$(document).ready(function() {
+    $("#search").on("input", function() {
+        var searchTerm = $(this).val().toLowerCase();
+
+        $(".note").filter(function() {
+            var noteText = $(this).text().toLowerCase();
+            return noteText.indexOf(searchTerm) === -1;
+        }).hide();
+
+        $(".note").filter(function() {
+            var noteText = $(this).text().toLowerCase();
+            return noteText.indexOf(searchTerm) !== -1;
+        }).show();
     });
 });

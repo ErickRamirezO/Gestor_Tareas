@@ -9,6 +9,11 @@ body {
     padding: 0;
 }
 
+#modal1{
+    width: 50%;
+    height: 700px!important;
+}
+
 #header {
     background-color: #f44336;
     padding: 20px;
@@ -17,17 +22,26 @@ body {
 }
 
 #notes-container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 .note {
     border: 1px solid #ccc;
+    flex-basis: calc(33.33% - 20px);
     border-radius: 5px;
-    padding: 10px;
+    padding: 20px;
+    margin: 10px;
+    width: 100%;
+    height: auto;
     margin-bottom: 10px;
     background-color: #fff;
+}
+
+.selected {
+    border: 2px solid red;
 }
 
 .note input[type="text"],
@@ -55,7 +69,7 @@ body {
     justify-content: center;
     align-items: center;
     margin: auto;
-    width: 70%;
+    width: 50%;
 }
 
 #add-note-form input[type="text"],
@@ -68,4 +82,14 @@ body {
     border: 1px solid black;
     font-weight: bold;
     border-radius: 7px;
+}
+
+
+.botones_anadir_tarea{
+    margin:20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap:25px;
 }

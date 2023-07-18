@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Barra de búsqueda en tiempo real con jQuery</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script>
+    $(document).ready(function() {
+      $("#search").on("input", function() {
+        var searchTerm = $(this).val().toLowerCase(); // Obtener el término de búsqueda en minúsculas
+
+        $(".note").filter(function() {
+          var noteText = $(this).text().toLowerCase(); // Obtener el texto de la nota en minúsculas
+          return noteText.indexOf(searchTerm) === -1; // Filtrar las notas que no coinciden con el término de búsqueda
+        }).hide(); // Ocultar las notas filtradas
+
+        $(".note").filter(function() {
+          var noteText = $(this).text().toLowerCase(); // Obtener el texto de la nota en minúsculas
+          return noteText.indexOf(searchTerm) !== -1; // Filtrar las notas que coinciden con el término de búsqueda
+        }).show(); // Mostrar las notas filtradas que coinciden con el término de búsqueda
+      });
+    });
+  </script>
+</head>
+<body>
+  <input type="text" id="search" placeholder="Buscar notas...">
+  <ul>
+    <li class="note">Nota 1</li>
+    <li class="note">Nota 2</li>
+    <li class="note">Nota 3</li>
+    <li class="note">Nota 4</li>
+    <li class="note">Nota 5</li>
+  </ul>
+</body>
+</html>
