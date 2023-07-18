@@ -12,9 +12,27 @@ $(".agregar-nota").click(function () {
 
     // Crear el elemento de la nota con la clase correspondiente
     var nuevaNota = $("<div>", {
-        class: "note ui-state-default " + notaClass + "ui-widget-content",
-        text: notaTitle,
+        class: "note ui-state-default " + notaClass + " ui-widget-content",
     });
+
+    var tituloNota = $("<h4>", {
+        class:"titulo_nota1",
+        text: notaTitle
+    });
+    
+    var contenidoNota = $("<p>", {
+        class:"contenido_nota1",
+        text: notaContent
+    });
+
+    var ambitos = $("<p>", {
+        class:"ambito_nota1",
+        text: ambito
+    });
+    
+    nuevaNota.append(tituloNota);
+    nuevaNota.append(contenidoNota);
+    nuevaNota.append(ambitos);
 
     // Incrementar el contador
     notaCount++;
@@ -100,13 +118,37 @@ $(document).ready(function() {
         $(".note").off("click");
     });
 
-    $(".boton_cancelar").click(function() {
+    $(".boton_cancelar_eliminar").click(function() {
         $(".section_eliminar").fadeOut();
         $(".note").off("click");
     });
 
 });
 
+//MODIFICAR TAREA
+$(".modificar_nota").click(function() {
+    $(".section_modificar").fadeIn();
+        $(".boton_modificar").hide();
+        $(".note").removeClass("selected").off("click").on("click", function() {
+            $(this).toggleClass("selected");
+            var selectedNotes = $(".note.selected");
+            if (selectedNotes.length > 0) {
+                $(".boton_modificar").fadeIn();
+            } else {
+                $(".boton_modificar").fadeOut();
+            }
+        });
+    $(".boton_modificar").click(function() {
+        var titulo = $(".titulo_nota1").val();
+            $("#note-title-modify").attr("placeholder",titulo);
+            $(".note").off("click");
+    });
+
+    $(".boton_cancelar_modificar").click(function() {
+        $(".section_modificar").fadeOut();
+        $(".note").off("click");
+    });
+});
 
 //BUSQUEDA DE NOTAS
 $(document).ready(function() {

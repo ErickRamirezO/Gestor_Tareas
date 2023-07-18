@@ -54,10 +54,19 @@
                 <h6 class="titulo_eliminar">
                     Selecciona una nota para eliminar
                 </h6>
-                <button class="btn cyan lighten-5 black-text boton_cancelar">
+                <button class="btn cyan lighten-5 black-text boton_cancelar_eliminar">
                     Cancelar
                 </button>
                 <button class="btn red boton_eliminar">Eliminar nota</button>
+            </div>
+            <div class="section_modificar col l12 center" style="display: none">
+                <h6 class="titulo_modificar">
+                    Selecciona una nota para modificar
+                </h6>
+                <button class="btn cyan lighten-5 black-text boton_cancelar_modificar">
+                    Cancelar
+                </button>
+                <button class="btn orange boton_modificar modal-trigger" href="#modal2">Modificar nota</button>
             </div>
             <div class="ambitos col m3 l3 hide-on-med-and-down">
                 <h6>Ámbitos o categorías</h6>
@@ -76,7 +85,7 @@
                 <div class="ui-state-default ui-widget-content note hoverable">
                     1
                     <p>j</p>
-                    <p>j</p>
+                    <p class="titulo_nota1">j</p>
                 </div>
                 <div class="ui-state-default ui-widget-content note hoverable">
                     2
@@ -102,11 +111,11 @@
         <!-- Formulario para agregar una nueva nota -->
         <div id="modal1" class="modal">
             <div class="modal-content">
-                <form id="add-note-form">
+                <form class="add-note-form">
                     <input
                         type="text"
                         id="note-title"
-                        placeholder="Título de la nota"
+                        placeholder="Ingresa el título de la nota"
                         required
                     />
                     <textarea
@@ -135,6 +144,43 @@
             </div>
         </div>
 
+        <!-- Formulario para modificar una nueva nota -->
+        <div id="modal2" class="modal">
+            <div class="modal-content">
+                <form class="add-note-form">
+                    <h5>Modificar Nota</h5>
+                    <input
+                        type="text"
+                        id="note-title-modify"
+                        placeholder="Ingresa el nuevo Título de la nota"
+                        required
+                    />
+                    <textarea
+                        id="note-content-modify"
+                        placeholder="Contenido de la nota"
+                        required
+                    ></textarea>
+                    <input
+                        type="text"
+                        name="ambito"
+                        id="ambito_modificar"
+                        placeholder="Ingresa el nuevo ámbito de la nota"
+                        required
+                    />
+                    <div class="botones_anadir_tarea">
+                        <a type="submit" class="modificar-nota orange btn">
+                            Modificar Nota
+                        </a>
+                        <a
+                            href="#!"
+                            class="modal-close waves-effect waves-green btn-flat red white-text"
+                            >Cancelar</a
+                        >
+                    </div>
+                </form>
+            </div>
+        </div>
+
         <!--AGREGAR TAREA-->
         <div class="fixed-action-btn">
             <a class="btn-floating pulse btn-large blue">
@@ -152,11 +198,18 @@
                 </li>
                 <li>
                     <a
-                        class="btn-floating red eliminar_nota tooltipped modal-trigger"
+                        class="btn-floating red eliminar_nota tooltipped"
                         data-position="left"
-                        id="btnToggle"
                         data-tooltip="Eliminar tarea"
                         ><i class="material-icons">delete</i></a
+                    >
+                </li>
+                <li>
+                    <a
+                        class="btn-floating orange modificar_nota tooltipped"
+                        data-position="left"
+                        data-tooltip="Modificar tarea"
+                        ><i class="material-icons">edit</i></a
                     >
                 </li>
             </ul>
