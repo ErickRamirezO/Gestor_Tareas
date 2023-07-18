@@ -15,80 +15,15 @@
     </head>
     <body>
         <nav>
-            <div class="nav-wrapper">
-                <i class="material-icons">lightbulb_outline</i>
-                <a href="#" class="brand-logo">TaskXpress</a>
+            <div class="nav-wrapper blue">
+                <a href="#" class="brand-logo">
+                    <i class="medium material-icons">lightbulb_outline</i>TaskXpress
+                </a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="badges.html">Iniciar sesión</a></li>
-                    <li><a class="waves-effect waves-light btn blue" href="html/registro.html">Registro</a></li>
+                    <li><i class="material-icons">account_circle</i></li>
                 </ul>
             </div>
         </nav>
-
-        <h4> Simplifica tus ideas</h4>
-        <div id="contenido">
-            <div class="cuadro_contenido"></div>
-            <div class="cuadro_contenido"></div>
-            <div class="cuadro_contenido"></div>
-        </div>
-
-        <script>
-            // Arreglo para almacenar las notas
-            var notes = [];
-
-            // Función para renderizar las notas en el contenedor
-            function renderNotes() {
-                var notesContainer = document.getElementById("notes");
-                notesContainer.innerHTML = "";
-
-                // Recorrer todas las notas y agregarlas al contenedor
-                for (var i = 0; i < notes.length; i++) {
-                    var note = notes[i];
-
-                    // Crear el elemento de la nota
-                    var noteElement = document.createElement("div");
-                    noteElement.classList.add("note");
-
-                    // Agregar el título y el contenido de la nota
-                    var titleElement = document.createElement("h2");
-                    titleElement.textContent = note.title;
-                    noteElement.appendChild(titleElement);
-
-                    var contentElement = document.createElement("p");
-                    contentElement.textContent = note.content;
-                    noteElement.appendChild(contentElement);
-
-                    // Agregar la nota al contenedor
-                    notesContainer.appendChild(noteElement);
-                }
-            }
-
-            // Función para manejar el envío del formulario para agregar una nueva nota
-            function handleAddNoteFormSubmit(event) {
-                event.preventDefault();
-
-                // Obtener los valores del formulario
-                var title = document.getElementById("note-title").value;
-                var content = document.getElementById("note-content").value;
-
-                // Crear un objeto de nota y agregarlo al arreglo de notas
-                var newNote = {
-                    title: title,
-                    content: content,
-                };
-                notes.push(newNote);
-
-                // Limpiar los campos del formulario
-                document.getElementById("note-title").value = "";
-                document.getElementById("note-content").value = "";
-
-                // Renderizar las notas actualizadas
-                renderNotes();
-            }
-
-            // Agregar el evento para manejar el envío del formulario
-            var addNoteForm = document.getElementById("add-note-form");
-            addNoteForm.addEventListener("submit", handleAddNoteFormSubmit);
-        </script>
     </body>
 </html>
