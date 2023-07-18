@@ -1,0 +1,152 @@
+/* Fuente Varela Round*/
+@import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
+
+/* Formatear estilos*/
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Varela Round", sans-serif;
+    color: #0d1326;
+    box-sizing: border-box;
+}
+
+/* ESTILOS PARA LOGIN*/
+body,
+html {
+    height: 100%;
+}
+
+.contenedor {
+    display: flex;
+    height: 100%;
+}
+
+.image-container-login {
+    flex: 1;
+    background-image: url("../img/login.jpg");
+    background-size: cover;
+    background-position: center;
+    border-right: 5px solid #49AFC6;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.image-container-registro {
+    flex: 1;
+    background-image: url("../img/registro.jpg");
+    background-size: cover;
+    background-position: center;
+    border-right: 5px solid #49AFC6;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.forms {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.form-content {
+    max-width: 400px;
+    width: 50%;
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 2px 2px 4px rgb(202, 202, 202, 0.5);
+    transition: box-shadow 0.3s;
+}
+
+.form-content:hover {
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.65);
+    transition: box-shadow 0.3s;
+}
+
+.login-form {
+    margin-bottom: 20px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.input-boxes {
+    margin-bottom: 20px;
+}
+
+.input-box {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.input-box i {
+    margin-right: 10px;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.input-box input:focus {
+    border-color: #0266c4;
+}
+
+.input-box input.invalid {
+    border-color: #e53935;
+}
+
+.button button[type="submit"] {
+    margin: auto;
+    border-radius: 7px;
+}
+
+/*Estilos para cambio de estilos de los inputs*/
+/* label color */
+/* label focus color */
+input[type="text"]:focus + label {
+    color: #3f99ff !important;
+}
+
+/*para password*/
+
+/* label underline focus color */
+input[type="password"]:focus {
+    border-bottom: 1px solid #3f99ff !important;
+    box-shadow: 0 1px 0 0 #3f99ff !important;
+}
+
+/* valid color */
+input[type="password"].valid {
+    border-bottom: 1px solid #4caf50 !important;
+    box-shadow: 0 1px 0 0 #4caf50 !important;
+}
+/* invalid color */
+input[type="password"].invalid {
+    border-bottom: 1px solid #f44336 !important;
+    box-shadow: 0 1px 0 0 #f44336 !important;
+}
+
+/*para text*/
+
+/* label underline focus color */
+input[type="text"]:focus {
+    border-bottom: 1px solid #3f99ff !important;
+    box-shadow: 0 1px 0 0 #3f99ff !important;
+}
+/* valid color */
+input[type="text"].valid {
+    border-bottom: 1px solid #4caf50 !important;
+    box-shadow: 0 1px 0 0 #4caf50 !important;
+}
+/* invalid color */
+input[type="text"].invalid {
+    border-bottom: 1px solid #f44336 !important;
+    box-shadow: 0 1px 0 0 #f44336 !important;
+}
