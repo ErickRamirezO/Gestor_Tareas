@@ -1,34 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Barra de búsqueda en tiempo real con jQuery</title>
-  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-  <script>
-    $(document).ready(function() {
-      $("#search").on("input", function() {
-        var searchTerm = $(this).val().toLowerCase(); // Obtener el término de búsqueda en minúsculas
-
-        $(".note").filter(function() {
-          var noteText = $(this).text().toLowerCase(); // Obtener el texto de la nota en minúsculas
-          return noteText.indexOf(searchTerm) === -1; // Filtrar las notas que no coinciden con el término de búsqueda
-        }).hide(); // Ocultar las notas filtradas
-
-        $(".note").filter(function() {
-          var noteText = $(this).text().toLowerCase(); // Obtener el texto de la nota en minúsculas
-          return noteText.indexOf(searchTerm) !== -1; // Filtrar las notas que coinciden con el término de búsqueda
-        }).show(); // Mostrar las notas filtradas que coinciden con el término de búsqueda
-      });
-    });
-  </script>
+  <title>Ejemplo de Color Picker con jQuery</title>
 </head>
 <body>
-  <input type="text" id="search" placeholder="Buscar notas...">
-  <ul>
-    <li class="note">Nota 1</li>
-    <li class="note">Nota 2</li>
-    <li class="note">Nota 3</li>
-    <li class="note">Nota 4</li>
-    <li class="note">Nota 5</li>
-  </ul>
+
+<h1>Color Picker con jQuery</h1>
+
+<label for="colorPicker">Selecciona un color:</label>
+<input type="color" id="colorPicker">
+
+<p>El color seleccionado es: <span id="colorSeleccionado"></span></p>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  // Asignar el evento cambio al color picker utilizando jQuery
+  $(document).ready(function() {
+    $("#colorPicker").change(function() {
+      // Obtener el valor del color seleccionado
+      var selectedColor = $(this).val();
+      $("#colorSeleccionado").text(selectedColor);
+    });
+  });
+</script>
+
 </body>
 </html>

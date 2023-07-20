@@ -47,14 +47,16 @@
             </div>
         </nav>
         <section class="row">
-            <div class="titulos_notas col l9 offset-l3 ">
+            <div class="titulos_notas col l9 offset-l3">
                 <h6>Todas las tareas</h6>
             </div>
             <div class="section_eliminar col l12 center" style="display: none">
                 <h6 class="titulo_eliminar">
                     Selecciona una nota para eliminar
                 </h6>
-                <button class="btn cyan lighten-5 black-text boton_cancelar_eliminar">
+                <button
+                    class="btn cyan lighten-5 black-text boton_cancelar_eliminar"
+                >
                     Cancelar
                 </button>
                 <button class="btn red boton_eliminar">Eliminar nota</button>
@@ -63,47 +65,246 @@
                 <h6 class="titulo_modificar">
                     Selecciona una nota para modificar
                 </h6>
-                <button class="btn cyan lighten-5 black-text boton_cancelar_modificar">
+                <button
+                    class="btn cyan lighten-5 black-text boton_cancelar_modificar"
+                >
                     Cancelar
                 </button>
-                <button class="btn orange boton_modificar modal-trigger" href="#modal2">Modificar nota</button>
+                <button
+                    class="btn orange boton_modificar modal-trigger"
+                    href="#modal2"
+                >
+                    Modificar nota
+                </button>
             </div>
             <div class="ambitos col m3 l3 hide-on-med-and-down">
                 <h6>Ámbitos o categorías</h6>
                 <div class="ambitos_item center hoverable">
-                    <p>
-                        Todas las tareas
-                    </p>
+                    <p>Todas las tareas</p>
+                </div>
+                <div class="ambitos_item center hoverable">
+                    <p>Universidad</p>
+                </div>
+                <div class="ambitos_item center hoverable">
+                    <p>Trabajo</p>
                 </div>
             </div>
             <div
                 id="notes-container"
                 class="sortable col m9 l9 notes-container"
             >
-            
                 <!-- Contenedor para las notas -->
                 <div class="ui-state-default ui-widget-content note hoverable">
-                    1
-                    <p>j</p>
-                    <p class="titulo_nota1">j</p>
+                    <div class="note-content-view">
+                        <p class="titulo_nota">titulo</p>
+                        <p class="contenido_nota">j</p>
+                        <p class="ambito_nota">j</p>
+                    </div>
+                    <div class="note-content-edit" style="display: none">
+                        <input
+                            type="text"
+                            class="note-title-edit"
+                            placeholder="Nuevo título"
+                            required
+                        />
+                        <input
+                            type="text"
+                            class="note-content-edit"
+                            placeholder="Nuevo contenido"
+                            required
+                        ></input>
+                        <label for="color">Seleccione un color:</label>
+                        <input type="color" class="note-color-edit" />
+                        <input
+                            type="text"
+                            class="note-ambito-edit"
+                            placeholder="Nuevo ámbito"
+                            required
+                        />
+                    </div>
+                    <div class="note-actions">
+                        <a
+                            class="blue lighten-2 editar-nota waves-effect waves-light btn tooltipped"
+                            data-tooltip="Modificar tarea"
+                            data-position="right"
+                            type="submit"
+                            ><i class="material-icons">edit</i></a
+                        >
+                        <a
+                            class="cyan lighten-2 guardar-nota waves-effect waves-light btn tooltipped"
+                            style="display: none"
+                            data-tooltip="Guardar"
+                            data-position="bottom"
+                            ><i class="material-icons">save</i></a
+                        >
+
+                        <a
+                            class="red lighten-2 cancelar-editar-nota waves-effect waves-light btn tooltipped"
+                            style="display: none"
+                            data-tooltip="Cancelar"
+                            data-position="right"
+                            ><i class="material-icons">cancel</i></a
+                        >
+                    </div>
                 </div>
                 <div class="ui-state-default ui-widget-content note hoverable">
-                    2
+                    <div class="note-content-view">
+                        <p class="titulo_nota">titulo</p>
+                        <p class="contenido_nota">j</p>
+                        <p class="ambito_nota">j</p>
+                    </div>
+                    <div class="note-content-edit" style="display: none">
+                        <input
+                            type="text"
+                            class="note-title-edit"
+                            placeholder="Nuevo título"
+                            required
+                        />
+                        <input
+                            type="text"
+                            class="note-content-edit"
+                            placeholder="Nuevo contenido"
+                            required
+                        ></input>
+                        <label for="color">Seleccione un color:</label>
+                        <input type="color" class="note-color-edit" />
+                        <input
+                            type="text"
+                            class="note-ambito-edit"
+                            placeholder="Nuevo ámbito"
+                            required
+                        />
+                    </div>
+                    <div class="note-actions">
+                        <a
+                            class="blue lighten-2 editar-nota waves-effect waves-light btn tooltipped"
+                            data-tooltip="Modificar tarea"
+                            data-position="right"
+                            type="submit"
+                            ><i class="material-icons">edit</i></a
+                        >
+                        <a
+                            class="cyan lighten-2 guardar-nota waves-effect waves-light btn tooltipped"
+                            style="display: none"
+                            data-tooltip="Guardar"
+                            data-position="bottom"
+                            ><i class="material-icons">save</i></a
+                        >
+
+                        <a
+                            class="red lighten-2 cancelar-editar-nota waves-effect waves-light btn tooltipped"
+                            style="display: none"
+                            data-tooltip="Cancelar"
+                            data-position="right"
+                            ><i class="material-icons">cancel</i></a
+                        >
+                    </div>
                 </div>
                 <div class="ui-state-default ui-widget-content note hoverable">
-                    3
+                    <div class="note-content-view">
+                        <p class="titulo_nota">titulo</p>
+                        <p class="contenido_nota">j</p>
+                        <p class="ambito_nota">j</p>
+                    </div>
+                    <div class="note-content-edit" style="display: none">
+                        <input
+                            type="text"
+                            class="note-title-edit"
+                            placeholder="Nuevo título"
+                            required
+                        />
+                        <input
+                            type="text"
+                            class="note-content-edit"
+                            placeholder="Nuevo contenido"
+                            required
+                        ></input>
+                        <label for="color">Seleccione un color:</label>
+                        <input type="color" class="note-color-edit" />
+                        <input
+                            type="text"
+                            class="note-ambito-edit"
+                            placeholder="Nuevo ámbito"
+                            required
+                        />
+                    </div>
+                    <div class="note-actions">
+                        <a
+                            class="blue lighten-2 editar-nota waves-effect waves-light btn tooltipped"
+                            data-tooltip="Modificar tarea"
+                            data-position="right"
+                            type="submit"
+                            ><i class="material-icons">edit</i></a
+                        >
+                        <a
+                            class="cyan lighten-2 guardar-nota waves-effect waves-light btn tooltipped"
+                            style="display: none"
+                            data-tooltip="Guardar"
+                            data-position="bottom"
+                            ><i class="material-icons">save</i></a
+                        >
+
+                        <a
+                            class="red lighten-2 cancelar-editar-nota waves-effect waves-light btn tooltipped"
+                            style="display: none"
+                            data-tooltip="Cancelar"
+                            data-position="right"
+                            ><i class="material-icons">cancel</i></a
+                        >
+                    </div>
                 </div>
                 <div class="ui-state-default ui-widget-content note hoverable">
-                    4
-                </div>
-                <div class="ui-state-default ui-widget-content note hoverable">
-                    5
-                </div>
-                <div class="ui-state-default ui-widget-content note hoverable">
-                    6
-                </div>
-                <div class="ui-state-default ui-widget-content note hoverable">
-                    7
+                    <div class="note-content-view">
+                        <p class="titulo_nota">titulo</p>
+                        <p class="contenido_nota">j</p>
+                        <p class="ambito_nota">j</p>
+                    </div>
+                    <div class="note-content-edit" style="display: none">
+                        <input
+                            type="text"
+                            class="note-title-edit"
+                            placeholder="Nuevo título"
+                            required
+                        />
+                        <input
+                            type="text"
+                            class="note-content-edit"
+                            placeholder="Nuevo contenido"
+                            required
+                        ></input>
+                        <label for="color">Seleccione un color:</label>
+                        <input type="color" class="note-color-edit" />
+                        <input
+                            type="text"
+                            class="note-ambito-edit"
+                            placeholder="Nuevo ámbito"
+                            required
+                        />
+                    </div>
+                    <div class="note-actions">
+                        <a
+                            class="blue lighten-2 editar-nota waves-effect waves-light btn tooltipped"
+                            data-tooltip="Modificar tarea"
+                            data-position="right"
+                            type="submit"
+                            ><i class="material-icons">edit</i></a
+                        >
+                        <a
+                            class="cyan lighten-2 guardar-nota waves-effect waves-light btn tooltipped"
+                            style="display: none"
+                            data-tooltip="Guardar"
+                            data-position="bottom"
+                            ><i class="material-icons">save</i></a
+                        >
+
+                        <a
+                            class="red lighten-2 cancelar-editar-nota waves-effect waves-light btn tooltipped"
+                            style="display: none"
+                            data-tooltip="Cancelar"
+                            data-position="right"
+                            ><i class="material-icons">cancel</i></a
+                        >
+                    </div>
                 </div>
             </div>
         </section>
@@ -144,43 +345,6 @@
             </div>
         </div>
 
-        <!-- Formulario para modificar una nueva nota -->
-        <div id="modal2" class="modal">
-            <div class="modal-content">
-                <form class="add-note-form">
-                    <h5>Modificar Nota</h5>
-                    <input
-                        type="text"
-                        id="note-title-modify"
-                        placeholder="Ingresa el nuevo Título de la nota"
-                        required
-                    />
-                    <textarea
-                        id="note-content-modify"
-                        placeholder="Contenido de la nota"
-                        required
-                    ></textarea>
-                    <input
-                        type="text"
-                        name="ambito"
-                        id="ambito_modificar"
-                        placeholder="Ingresa el nuevo ámbito de la nota"
-                        required
-                    />
-                    <div class="botones_anadir_tarea">
-                        <a type="submit" class="modificar-nota orange btn">
-                            Modificar Nota
-                        </a>
-                        <a
-                            href="#!"
-                            class="modal-close waves-effect waves-green btn-flat red white-text"
-                            >Cancelar</a
-                        >
-                    </div>
-                </form>
-            </div>
-        </div>
-
         <!--AGREGAR TAREA-->
         <div class="fixed-action-btn">
             <a class="btn-floating pulse btn-large blue">
@@ -202,14 +366,6 @@
                         data-position="left"
                         data-tooltip="Eliminar tarea"
                         ><i class="material-icons">delete</i></a
-                    >
-                </li>
-                <li>
-                    <a
-                        class="btn-floating orange modificar_nota tooltipped"
-                        data-position="left"
-                        data-tooltip="Modificar tarea"
-                        ><i class="material-icons">edit</i></a
                     >
                 </li>
             </ul>
