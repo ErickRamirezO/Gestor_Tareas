@@ -42,7 +42,7 @@ function crearNuevaNota(notaTitle, notaContent, ambito) {
         required: true,
     });
 
-    var textareaContentEdit = $("<textarea>", {
+    var textareaContentEdit = $("<input>", {
         type: "text",
         class: "note-content-edit",
         placeholder: "Nuevo contenido",
@@ -363,11 +363,11 @@ function sortNotesAlphabetically() {
     });
 
     // Animate the movement of notes
-    notesContainer.slideUp(400, function () {
+    notesContainer.slideUp(500, function () {
         $.each(notes, function (index, note) {
             $(note).appendTo(notesContainer);
         });
-        notesContainer.slideDown(400);
+        notesContainer.slideDown(500);
     });
 }
 
