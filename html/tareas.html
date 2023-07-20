@@ -17,6 +17,12 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
         <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+        <!-- SweetAlert 2 -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.2/dist/sweetalert2.min.js"></script>
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.2/dist/sweetalert2.min.css"
+        />
     </head>
     <body>
         <nav>
@@ -28,7 +34,7 @@
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li>Juan Pérez</li>
                     <li><a href="badges.html">Editar perfil</a></li>
-                    <li><i class="material-icons">account_circle</i></li>
+                    <li><a class="btn blue cerrar_sesion" id="logoutLink">Salir</a></li>
                 </ul>
                 <form class="hide-on-med-and-down">
                     <div class="input-field" style="margin: 0 auto; width: 50%">
@@ -387,5 +393,6 @@
             </ul>
         </div>
         <script src="../js/tareas.js"></script>
+        <script src="../js/login_registro.js"></script>
     </body>
 </html>
