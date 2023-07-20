@@ -122,6 +122,14 @@ $(".agregar-nota").click(function () {
     var notaContent = $("#note-content").val();
     var ambito = $("#ambito").val();
 
+    var ambitoDivPrincipal= $("<div>", {
+        class: "ambitos col m3 l3 hide-on-med-and-down",
+    });
+
+    var nuevoAmbito = $("<div>", {
+        class: "ambitos_item center hoverable",
+    });
+
     // Crear la nueva nota usando la función creada
     var nuevaNota = crearNuevaNota(notaTitle, notaContent, ambito);
 
@@ -340,4 +348,30 @@ $(document).ready(function () {
             })
             .fadeIn();
     });
+});
+
+//ORDENAR NOTAS
+// Function to sort notes by title
+function sortNotesAlphabetically() {
+    var notesContainer = $("#notes-container");
+    var notes = notesContainer.children(".note").get();
+
+    notes.sort(function (a, b) {
+        var titleA = $(a).find(".titulo_nota").text().toUpperCase();
+        var titleB = $(b).find(".titulo_nota").text().toUpperCase();
+        return titleA.localeCompare(titleB);
+    });
+
+    // Animate the movement of notes
+    notesContainer.slideUp(400, function () {
+        $.each(notes, function (index, note) {
+            $(note).appendTo(notesContainer);
+        });
+        notesContainer.slideDown(400);
+    });
+}
+
+// Call the sort function when the button is clicked
+$(".ordenar_fecha").click(function () {
+    sortNotesAlphabetically();
 });
