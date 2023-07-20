@@ -127,6 +127,7 @@ body {
 .grid-element {
     width: 90%;
     margin: auto;
+    text-align: center;
 }
 
 .demo-img {
@@ -134,6 +135,22 @@ body {
     border-radius: 5%;
 }
 
-.medium-text {
+.text-medium {
     font-size: large;
+}
+
+.text-small {
+    font-size: xx-large;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mini-paragraph {
+    padding: 15px 0px;
+    width: 40%;
+    margin: auto;
+    text-align: center;
+    font-size: small;
 }
