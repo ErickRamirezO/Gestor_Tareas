@@ -26,6 +26,9 @@ function crearNuevaNota(notaTitle, notaContent, ambito) {
         text: ambito,
     });
 
+    // Asignar el atributo data-ambito con el valor del ámbito ingresado
+    nuevaNota.attr("data-ambito", ambito);
+
     noteContentView.append(tituloNota);
     noteContentView.append(contenidoNota);
     noteContentView.append(ambitos);
@@ -117,6 +120,21 @@ function crearNuevaNota(notaTitle, notaContent, ambito) {
     return nuevaNota;
 }
 
+function crearNuevoAmbito(ambito) {
+    var nuevoAmbitoItem = $("<div>", {
+        class: "ambitos_item center hoverable",
+    });
+
+    var ambitoTexto = $("<p>", {
+        text: ambito,
+    });
+
+    nuevoAmbitoItem.append(ambitoTexto);
+
+    // Agregar el ámbito creado al div contenedor "ambitos col m3 l3 hide-on-med-and-down"
+    $(".ambitos.col.m3.l3.hide-on-med-and-down").append(nuevoAmbitoItem);
+}
+
 $(".agregar-nota").click(function () {
     var notaTitle = $("#note-title").val();
     var notaContent = $("#note-content").val();
@@ -132,6 +150,8 @@ $(".agregar-nota").click(function () {
 
     // Crear la nueva nota usando la función creada
     var nuevaNota = crearNuevaNota(notaTitle, notaContent, ambito);
+
+    crearNuevoAmbito(ambito);
 
     // Agregar la nueva nota al contenedor "notes-container"
     $("#notes-container").append(nuevaNota);
@@ -372,6 +392,33 @@ function sortNotesAlphabetically() {
 }
 
 // Call the sort function when the button is clicked
-$(".ordenar_fecha").click(function () {
+$(".ordenar_titulo").click(function () {
     sortNotesAlphabetically();
+});
+
+
+//selecionar ambitos
+$(".ambitos_item.center.hoverable").click(function() {
+    var ambitoSeleccionado = $(this).find("p").text();
+
+    // Agregar clase "selected" al ámbito seleccionado y removerla del resto
+    $(".ambitos_item.center.hoverable").removeClass("selected");
+    $(this).addClass("selected");
+
+    // Ocultar todas las notas
+    $(".note").hide();
+
+    // Mostrar solo las notas que corresponden al ámbito seleccionado
+    if (ambitoSeleccionado === "Todas las tareas") {
+        // Si se selecciona "Todas las tareas", mostrar todas las notas
+        $(".note").fadeIn(500);
+    } else {
+        // Si se selecciona un ámbito específico, mostrar las notas que coinciden con ese ámbito
+        $(".note").each(function() {
+            var ambitoNota = $(this).find(".ambito_nota").text();
+            if (ambitoNota === ambitoSeleccionado) {
+                $(this).fadeIn(500);
+            }
+        });
+    }
 });
