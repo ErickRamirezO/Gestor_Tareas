@@ -4,7 +4,7 @@ var seleccionados = []; // Array para almacenar los elementos seleccionados
 // Función para crear una nueva nota con la estructura deseada
 function crearNuevaNota(notaTitle, notaContent, ambito) {
     var nuevaNota = $("<div>", {
-        class: "ui-state-default ui-widget-content note hoverable",
+        class: "ui-state-default ui-widget-content note hoverable ui-sortable-handle",
     });
 
     var noteContentView = $("<div>", {
