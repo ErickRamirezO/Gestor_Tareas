@@ -133,20 +133,39 @@ function crearNuevoAmbito(ambito) {
 
     // Agregar el ámbito creado al div contenedor "ambitos col m3 l3 hide-on-med-and-down"
     $(".ambitos.col.m3.l3.hide-on-med-and-down").append(nuevoAmbitoItem);
+
+    // Asignar el evento al nuevo ámbito creado
+    nuevoAmbitoItem.click(function() {
+        var ambitoSeleccionado = $(this).find("p").text();
+
+        // Agregar clase "selected" al ámbito seleccionado y removerla del resto
+        $(".ambitos_item.center.hoverable").removeClass("selected");
+        $(this).addClass("selected");
+
+        // Ocultar todas las notas
+        $(".note").hide();
+
+        // Mostrar solo las notas que corresponden al ámbito seleccionado
+        if (ambitoSeleccionado === "Todas las tareas") {
+            // Si se selecciona "Todas las tareas", mostrar todas las notas
+            $(".note").fadeIn(500);
+        } else {
+            // Si se selecciona un ámbito específico, mostrar las notas que coinciden con ese ámbito
+            $(".note").each(function() {
+                var ambitoNota = $(this).find(".ambito_nota").text();
+                if (ambitoNota === ambitoSeleccionado) {
+                    $(this).fadeIn(500);
+                }
+            });
+        }
+    });
 }
+
 
 $(".agregar-nota").click(function () {
     var notaTitle = $("#note-title").val();
     var notaContent = $("#note-content").val();
     var ambito = $("#ambito").val();
-
-    var ambitoDivPrincipal= $("<div>", {
-        class: "ambitos col m3 l3 hide-on-med-and-down",
-    });
-
-    var nuevoAmbito = $("<div>", {
-        class: "ambitos_item center hoverable",
-    });
 
     // Crear la nueva nota usando la función creada
     var nuevaNota = crearNuevaNota(notaTitle, notaContent, ambito);
@@ -164,25 +183,31 @@ $(".agregar-nota").click(function () {
     // Asignar eventos para la nota recién creada
     nuevaNota.find(".editar-nota").click(function () {
         var note = $(this).closest(".note");
-        note.find(".note-content-edit").show();
-        note.find(".note-content-view").hide();
+        note.find(".editar-nota").hide();
         note.find(".guardar-nota").show();
         note.find(".cancelar-editar-nota").show();
-        note.find(".editar-nota").hide();
+
+        var noteContent = note.find(".note-content-view").hide();
+        var noteEdit = note.find(".note-content-edit").show();
+
+        noteEdit.find(".note-title-edit").val(note.find(".titulo_nota").text());
+        noteEdit.find(".note-content-edit").val(note.find(".contenido_nota").text());
+        noteEdit.find(".note-ambito-edit").val(note.find(".ambito_nota").text());
+        noteEdit.find(".note-color-edit").val(rgbToHex(note.css("background-color")));
     });
 
     nuevaNota.find(".guardar-nota").click(function () {
         var note = $(this).closest(".note");
-        var noteContent = note.find(".note-content-view").show();
-        var noteEdit = note.find(".note-content-edit").hide();
+        var noteContent = note.find(".note-content-view");
+        var noteEdit = note.find(".note-content-edit");
         var noteActions = note.find(".note-actions");
 
         noteActions.show();
 
-        var nuevoTitulo = note.find(".note-title-edit").val().trim();
-        var nuevoContenido = note.find(".note-content-edit").val().trim();
-        var nuevoAmbito = note.find(".note-ambito-edit").val().trim();
-        var nuevoColor = note.find(".note-color-edit").val();
+        var nuevoTitulo = noteEdit.find(".note-title-edit").val().trim();
+        var nuevoContenido = noteEdit.find(".note-content-edit").val().trim();
+        var nuevoAmbito = noteEdit.find(".note-ambito-edit").val().trim();
+        var nuevoColor = noteEdit.find(".note-color-edit").val();
 
         noteContent.find(".titulo_nota").text(nuevoTitulo);
         noteContent.find(".contenido_nota").text(nuevoContenido);
@@ -192,6 +217,8 @@ $(".agregar-nota").click(function () {
         note.find(".editar-nota").show();
         note.find(".guardar-nota").hide();
         note.find(".cancelar-editar-nota").hide();
+        noteContent.show();
+        noteEdit.hide();
     });
 
     nuevaNota.find(".cancelar-editar-nota").click(function () {
@@ -207,7 +234,9 @@ $(".agregar-nota").click(function () {
         note.find(".cancelar-editar-nota").hide();
     });
 
-    // ... (resto del código)
+    $(".guardar-nota").click(function () {
+        
+    });
 });
 
 
